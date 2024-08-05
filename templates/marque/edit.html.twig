@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la Marque{% endblock %}
+
+{% block body %}
+    <h1>Modifier la Marque</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.nomMarque) }}
+        {{ form_row(form.paysOrigine) }}
+        {{ form_row(form.created_at) }}
+        {{ form_row(form.Valider) }}
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Voitures{% endblock %}
+
+{% block body %}
+   
+
+    <h1><span class="red-text">Liste des Voitures</span></h1>
+
+    <a href="{{ path('add_voiture') }}" class="add-button"><span class="green-text">Ajouter une voiture</span></a>
+<div class="card-group">
+    <div class="row">
+        {% for voiture in voitures %}
+            <div class="col-md-4">
+                <div class="card m-3" style="width: 100%;">
+                    {% if voiture.getImage() is not null %}
+                        <img class="card-img-top img-fluid" src="{{ publicPath ~ voiture.getImage() }}" alt="Card image cap">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">nomvoiture: <p> {{ voiture.nomVoiture }}</p></h5>
+                        <p class="card-text">Puissance: <p>{{ voiture.puissance }}</p></p>
+                        <p class="card-text">caracteristique:{{ voiture.caracteristique }}</p>
+                        <p class="card-text">Marque: {{ voiture.marque.nomMarque }}</p>
+                    </div>
+                </div>
+            </div>
+            {% if loop.index % 3 == 0 %}
+                </div><div class="row">
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+
+       
+            
+        
+{% endblock %}

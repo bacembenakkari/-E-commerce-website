@@ -1,0 +1,9 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        voiture:
+            uri_prefix: /images/voiture
+            upload_destination: '%kernel.project_dir%/public/images/voiture'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer # Choisissez le namer approprié si nécessaire
+           

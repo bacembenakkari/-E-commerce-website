@@ -1,0 +1,74 @@
+{# templates/marque/show.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des marques</title>
+    <style>
+        /* Ajoutez du style pour rendre le tableau plus attrayant */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .actions a {
+            margin-right: 5px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        h1 {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Liste des marques</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom de la marque</th>
+                <th>Pays d'origine</th>
+                <th>Date de création</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for marque in marques %}
+                <tr>
+                    <td>{{ marque.getNomMarque() }}</td>
+                    <td>{{ marque.getPaysOrigine() }}</td>
+                    <td>{{ marque.getCreatedAt()|date('Y-m-d H:i:s') }}</td>
+                    <td class="actions">
+                        <a href="{{ path('edit_marque', {'id': marque.id}) }}">Edit</a>
+                        <a href="{{ path('add_marque') }}">AddM</a>
+                        <a href="{{ path('marq_delete', {'id': marque.id}) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <!-- Bouton pour voir toutes les voitures -->
+    <a href="{{ path('show_voitures') }}">Voir toutes les voitures</a>
+</body>
+</html>
